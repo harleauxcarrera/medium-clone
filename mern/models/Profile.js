@@ -20,13 +20,14 @@ const ProfileSchema = new Schema({
     type: String
   },
   location: {
-    type: String
+    type: String,
+    required: true
   },
   status: {
     type: String,
-    require: true
+    required: true
   },
-  skils: {
+  skills: {
     type: [String],
     required: true
   },
@@ -66,7 +67,7 @@ const ProfileSchema = new Schema({
       }
     }
   ],
-  eduacation: [
+  education: [
     {
       school: {
         type: String,
@@ -76,7 +77,7 @@ const ProfileSchema = new Schema({
         type: String,
         required: true
       },
-      fieldo: {
+      field: {
         type: String,
         required: true
       },

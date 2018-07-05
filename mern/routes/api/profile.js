@@ -79,19 +79,14 @@ router.post(
         //create
 
         //check if handle exists
-        Profle.findONe(
-          { handle: profileFields.handle }.then(profile => {
-            if (profile) {
-              errors.handle = "that handle already exists";
-              res.status(404).json(errors);
-            }
-
-            //save the profile
-            new Profile(profileFields)
-              .save()
-              .then(profile => res.json(profile));
-          })
-        );
+        Profile.findOne({ handle: profileFields.handle }).then(profile => {
+          if (profile) {
+            errors.handle = "that handle already exists";
+            res.status(404).json(errors);
+          }
+          //save the profile
+          new Profile(profileFields).save().then(profile => res.json(profile));
+        });
       }
     });
   }
