@@ -1,0 +1,65 @@
+Course notes:
+
+Section 1
+  This app uses express API framework (nodejs) , mongoDB, react&redux
+
+Section 2
+  Set up mongoDB with mlab
+  install dependencies
+  set up basic server/app.js:
+    1.app.get('/', (req, res) => res.send("hello"));
+    2. const port = process.env.PORT || 5000;
+    3. app.listen(port, () => console.log("the server is running on port ${port}")); 
+  Set up nodemon
+    package.json -> script-> "start": "node server.js"
+                              "server" : "nodemone server.js"
+                              Now you can use npm run server (auto reload)
+  Connect MongoDB with mongoose package
+    create the config dir
+      store mlab key here
+          module.exports = {
+            mongoURI: ...
+          };
+  Route files with express router
+    mkdir routes
+      make test route for each displaying success message .json() use POSTMAN
+
+
+ Section 3
+
+ Create the User model 
+ /users/register
+ /users/login
+ Jason Web Tokens
+ Using passport for JWT Auth Strategy
+  (user recieves token if signed in successfully)
+
+Validation Handlers
+  mkdir validation-> validateLoginInput...
+
+Section 4
+
+Create Profile model
+GET /profile/current
+POST /profile (create/update profile info)
+  profile input field validation file
+
+Rest of Profile API routes
+  Experience, Education, ADD/DELETE
+
+Section 5
+
+Create the Post model
+POST /Post
+Get and Delete Post routes
+Add and Remove comments
+
+Section 6 Getting into the Front End 
+  use create react app to install a client dir into the main project
+  use a proxy to avoid redudant axios.get('https://localhost'...)
+  use 'concurrently' to avoid having to start the front end and back end servers manually
+    npm instlal concurrently
+    config package.json in the backend server:
+        "server": "nodemon server.js",
+        "client": "npm start --prefix client",
+        "dev": "concurrently \"npm run server\" \"npm run client\""
